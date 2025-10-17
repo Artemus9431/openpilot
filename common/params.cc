@@ -610,6 +610,7 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"NoFSC", PERSISTENT},
     {"BlendedACC", PERSISTENT},
     {"ManualTransmission", PERSISTENT},
+    {"RemoteAccess", PERSISTENT},
 };
 
 } // namespace

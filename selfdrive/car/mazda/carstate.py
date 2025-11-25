@@ -213,7 +213,7 @@ class CarState(CarStateBase):
       ret.cruiseState.enabled = (cp_body.vl["CRUZE_STATE"]["CRZ_STATE"] >= 3)
       ret.cruiseState.available = (cp_body.vl["CRUZE_STATE"]["CRZ_STATE"] >= 2)
     ret.steeringAngleDeg = cp.vl["STEER"]["STEER_ANGLE"]
-    ret.cruiseState.standstill = ret.standstill
+    ret.cruiseState.standstill = ret.standstill if not self.CP.openpilotLongitudinalControl else False
     ret.steeringRateDeg = (ret.steeringAngleDeg - self._prev_steering_angle) / DT_CTRL
     self._prev_steering_angle = ret.steeringAngleDeg
 

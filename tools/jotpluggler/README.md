@@ -41,7 +41,7 @@ For a quick demo, run this command:
 
 
 ## Basic Usage/Features:
-- The text box to load a route is a the top left of the page, accepts standard openpilot format routes (e.g. `a2a0ccea32023010/2023-07-27--13-01-19/0:1`, `https://connect.comma.ai/a2a0ccea32023010/2023-07-27--13-01-19/`)
+- The text box to load a route is a the top left of the page, accepts standard openpilot format routes (e.g. `a2a0ccea32023010/2023-07-27--13-01-19/0:1`, `https://stable.konik.ai/a2a0ccea32023010/2023-07-27--13-01-19/`)
 - The Play/Pause button is at the bottom of the screen, you can drag the bottom slider to seek. The timeline in timeseries plots are synced with the slider.
 - The Timeseries List sidebar has several dropdowns, the fields each show the field name and value, synced with the timeline (will show N/A until the time of the first message in that field is reached).
 - There is a search bar for the timeseries list, you can search for structs or fields, or both by separating with a "/"

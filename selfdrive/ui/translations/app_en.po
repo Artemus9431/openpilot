@@ -169,13 +169,13 @@ msgstr "Back"
 
 #: selfdrive/ui/widgets/prime.py:38
 #, python-format
-msgid "Become a comma prime member at connect.comma.ai"
-msgstr "Become a comma prime member at connect.comma.ai"
+msgid "Become a comma prime member at stable.konik.ai"
+msgstr "Become a comma prime member at stable.konik.ai"
 
 #: selfdrive/ui/widgets/pairing_dialog.py:130
 #, python-format
-msgid "Bookmark connect.comma.ai to your home screen to use it like an app"
-msgstr "Bookmark connect.comma.ai to your home screen to use it like an app"
+msgid "Bookmark stable.konik.ai to your home screen to use it like an app"
+msgstr "Bookmark stable.konik.ai to your home screen to use it like an app"
 
 #: selfdrive/ui/layouts/settings/device.py:68
 #, python-format
@@ -499,8 +499,8 @@ msgstr "GOOD"
 
 #: selfdrive/ui/widgets/pairing_dialog.py:128
 #, python-format
-msgid "Go to https://connect.comma.ai on your phone"
-msgstr "Go to https://connect.comma.ai on your phone"
+msgid "Go to https://stable.konik.ai on your phone"
+msgstr "Go to https://stable.konik.ai on your phone"
 
 #: selfdrive/ui/layouts/sidebar.py:129
 msgid "HIGH"
@@ -648,10 +648,10 @@ msgstr "Pair your device to your comma account"
 #: selfdrive/ui/widgets/setup.py:48 selfdrive/ui/layouts/settings/device.py:24
 #, python-format
 msgid ""
-"Pair your device with comma connect (connect.comma.ai) and claim your comma "
+"Pair your device with comma connect (stable.konik.ai) and claim your comma "
 "prime offer."
 msgstr ""
-"Pair your device with comma connect (connect.comma.ai) and claim your comma "
+"Pair your device with comma connect (stable.konik.ai) and claim your comma "
 "prime offer."
 
 #: selfdrive/ui/widgets/setup.py:91

@@ -23,6 +23,11 @@ DESCRIPTIONS = {
   'RecordFront': "Upload data from the driver facing camera and help improve the driver monitoring algorithm.",
   "IsMetric": "Display speed in km/h instead of mph.",
   "RecordAudio": "Record and store microphone audio while driving. The audio will be included in the dashcam video in comma connect.",
+  "TorqueInterceptorEnabled": "Enable the torque interceptor to control the steering wheel.",
+  "RadarInterceptorEnabled": "Enable if you have installed the radar interceptor.",
+  "NoMRCC": "Enable if your car does not have stock MRCC.",
+  "NoFSC": "Enable if your car does not have stock FSC.",
+  "ManualTransmission": "Enable if your car has a manual transmission.",
 }
 
 
@@ -83,6 +88,36 @@ class TogglesLayout(Widget):
       ),
       toggle_item(
         "Use Metric System", DESCRIPTIONS["IsMetric"], self._params.get_bool("IsMetric"), icon="metric.png"
+      ),
+      toggle_item(
+        "Enable Torque Interceptor",
+        DESCRIPTIONS["TorqueInterceptorEnabled"],
+        self._params.get_bool("TorqueInterceptorEnabled"),
+        icon="chffr_wheel.png",
+      )
+      toggle_item(
+        "Enable Radar Interceptor",
+        DESCRIPTIONS["RadarInterceptorEnabled"],
+        self._params.get_bool("RadarInterceptorEnabled"),
+        icon="chffr_wheel.png",
+      ),
+      toggle_item(
+        "Disable Stock MRCC",
+        DESCRIPTIONS["NoMRCC"],
+        self._params.get_bool("NoMRCC"),
+        icon="chffr_wheel.png",
+      ),
+      toggle_item(
+        "Disable Stock FSC",
+        DESCRIPTIONS["NoFSC"],
+        self._params.get_bool("NoFSC"),
+        icon="chffr_wheel.png",
+      ),
+      toggle_item(
+        "Manual Transmission",
+        DESCRIPTIONS["ManualTransmission"],
+        self._params.get_bool("ManualTransmission"),
+        icon="chffr_wheel.png",
       ),
     ]
 

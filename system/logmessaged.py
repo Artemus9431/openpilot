@@ -3,9 +3,27 @@ import zmq
 from typing import NoReturn
 
 import cereal.messaging as messaging
+from cereal.services import SERVICE_LIST
 from openpilot.common.logging_extra import SwagLogFileFormatter
 from openpilot.system.hardware.hw import Paths
 from openpilot.common.swaglog import get_file_handler
+
+ALIGNMENT = 8
+SIZE_TAG_BYTES = 8
+
+
+def _msgq_total_size(payload_size: int) -> int:
+  return ((payload_size + SIZE_TAG_BYTES + (ALIGNMENT - 1)) // ALIGNMENT) * ALIGNMENT
+
+
+def _send_log(sock: messaging.PubSocket, service: str, record: str) -> None:
+  msg = messaging.new_message(None, valid=True, **{service: record})
+  msg_bytes = msg.to_bytes()
+  queue_size = SERVICE_LIST[service].queue_size
+  if 3 * _msgq_total_size(len(msg_bytes)) <= queue_size:
+    sock.send(msg_bytes)
+  else:
+    print("WARNING:", service, "too big to publish", len(msg_bytes), "queue_size", queue_size)
 
 
 def main() -> NoReturn:
@@ -29,18 +47,16 @@ def main() -> NoReturn:
       if level >= log_level:
         log_handler.emit(record)
 
-      if len(record) > 2*1024*1024:
+      if len(record) > 2 * 1024 * 1024:
         print("WARNING: log too big to publish", len(record))
         print(record[:100])
         continue
 
       # then we publish them
-      msg = messaging.new_message(None, valid=True, logMessage=record)
-      log_message_sock.send(msg.to_bytes())
+      _send_log(log_message_sock, "logMessage", record)
 
       if level >= 40:  # logging.ERROR
-        msg = messaging.new_message(None, valid=True, errorLogMessage=record)
-        error_log_message_sock.send(msg.to_bytes())
+        _send_log(error_log_message_sock, "errorLogMessage", record)
   finally:
     sock.close()
     ctx.term()

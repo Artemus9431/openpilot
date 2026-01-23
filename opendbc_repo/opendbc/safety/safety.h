@@ -79,6 +79,7 @@ struct sample_t angle_meas;         // last 6 steer angles/curvatures
 
 
 int alternative_experience = 0;
+bool brake_disables_lateral = true;  // whether brake press disables lateral control (true = brake does disable)
 
 // time since safety mode has been changed
 uint32_t safety_mode_cnt = 0U;
@@ -341,8 +342,8 @@ static void relay_malfunction_set(void) {
 static void generic_rx_checks(void) {
   gas_pressed_prev = gas_pressed;
 
-  // exit controls on rising edge of brake press
-  if (brake_pressed && (!brake_pressed_prev || vehicle_moving)) {
+  // exit controls on rising edge of brake press (unless brake_disables_lateral is false)
+  if (brake_pressed && (!brake_pressed_prev || vehicle_moving) && brake_disables_lateral) {
     controls_allowed = false;
   }
   brake_pressed_prev = brake_pressed;

@@ -375,6 +375,7 @@ void process_peripheral_state(Panda *panda, PubMaster *pm, bool no_fan_control) 
   static int prev_ir_pwr = 999;
   static uint32_t prev_frame_id = UINT32_MAX;
   static bool driver_view = false;
+  static bool prev_brake_disables_lateral = true;
 
   // TODO: can we merge these?
   static FirstOrderFilter integ_lines_filter(0, 30.0, 0.05);
@@ -389,6 +390,13 @@ void process_peripheral_state(Panda *panda, PubMaster *pm, bool no_fan_control) 
         panda->set_fan_speed(fan_speed);
         prev_fan_speed = fan_speed;
       }
+    }
+
+    // Brake disables lateral control setting
+    bool brake_disables_lateral = params.getBool("BrakeDisablesLateral");
+    if (brake_disables_lateral != prev_brake_disables_lateral || sm.frame % 100 == 0) {
+      panda->set_brake_disables_lateral(brake_disables_lateral);
+      prev_brake_disables_lateral = brake_disables_lateral;
     }
 
     if (sm.updated("driverCameraState")) {

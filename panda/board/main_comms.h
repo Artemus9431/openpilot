@@ -319,6 +319,10 @@ int comms_control_handler(ControlPacket_t *req, uint8_t *resp) {
         UNUSED(ret);
       }
       break;
+    // **** 0xfd: set brake disables lateral
+    case 0xfd:
+      brake_disables_lateral = (req->param1 != 0U);
+      break;
     default:
       print("NO HANDLER ");
       puth(req->request);

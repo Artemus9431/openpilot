@@ -176,6 +176,10 @@ void Panda::set_canfd_non_iso(uint16_t bus, bool non_iso) {
   handle->control_write(0xfc, bus, non_iso);
 }
 
+void Panda::set_brake_disables_lateral(bool brake_disables_lateral) {
+  handle->control_write(0xfd, brake_disables_lateral, 0);
+}
+
 static uint8_t len_to_dlc(uint8_t len) {
   if (len <= 8) {
     return len;

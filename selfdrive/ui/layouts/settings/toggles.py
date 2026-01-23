@@ -36,6 +36,7 @@ DESCRIPTIONS = {
   "NoMRCC": tr_noop("Enable if your car does not have stock MRCC."),
   "NoFSC": tr_noop("Enable if your car does not have stock FSC."),
   "ManualTransmission": tr_noop("Enable if your car has a manual transmission."),
+  "BrakeDisablesLateral": tr_noop("When disabled, lateral control will not be disabled when the brake is pressed."),
 }
 
 
@@ -124,6 +125,12 @@ class TogglesLayout(Widget):
         DESCRIPTIONS["ManualTransmission"],
         "chffr_wheel.png",
         True,
+      ),
+      "BrakeDisablesLateral": (
+        lambda: tr("Brake Disables Lateral Control"),
+        DESCRIPTIONS["BrakeDisablesLateral"],
+        "chffr_wheel.png",
+        False,
       ),
     }
 

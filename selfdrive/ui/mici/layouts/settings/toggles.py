@@ -30,6 +30,7 @@ class TogglesLayoutMici(NavWidget):
     enable_no_mrcc = BigParamControl("no stock MRCC", "NoMRCC", toggle_callback=restart_needed_callback)
     enable_no_fsc = BigParamControl("no stock FSC", "NoFSC", toggle_callback=restart_needed_callback)
     enable_manual_transmission = BigParamControl("manual transmission", "ManualTransmission", toggle_callback=restart_needed_callback)
+    brake_disables_lateral = BigParamControl("brake disables lateral", "BrakeDisablesLateral")
 
     self._scroller = Scroller([
       self._personality_toggle,
@@ -45,6 +46,7 @@ class TogglesLayoutMici(NavWidget):
       enable_no_mrcc,
       enable_no_fsc,
       enable_manual_transmission,
+      brake_disables_lateral,
     ], snap_items=False)
 
     # Toggle lists
@@ -61,6 +63,7 @@ class TogglesLayoutMici(NavWidget):
       ("NoMRCC", enable_no_mrcc),
       ("NoFSC", enable_no_fsc),
       ("ManualTransmission", enable_manual_transmission),
+      ("BrakeDisablesLateral", brake_disables_lateral),
     )
 
     enable_openpilot.set_enabled(lambda: not ui_state.engaged)

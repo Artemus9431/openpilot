@@ -3,6 +3,7 @@ import cereal.messaging as messaging
 from opendbc.car import DT_CTRL, structs
 from opendbc.car.interfaces import MAX_CTRL_SPEED
 
+from openpilot.common.params import Params
 from openpilot.selfdrive.selfdrived.events import Events
 
 ButtonType = structs.CarState.ButtonEvent.Type
@@ -41,6 +42,7 @@ BRAND_EXTRA_GEARS = {
 class CarSpecificEvents:
   def __init__(self, CP: structs.CarParams):
     self.CP = CP
+    self.params = Params()
 
     self.steering_unpressed = 0
     self.low_speed_alert = False
@@ -217,6 +219,9 @@ class CarSpecificEvents:
       if CS.cruiseState.enabled and not CS_prev.cruiseState.enabled and not CS.blockPcmEnable:
         events.add(EventName.pcmEnable)
       elif not CS.cruiseState.enabled:
-        events.add(EventName.pcmDisable)
+        # Don't add pcmDisable if brake is pressed and brake_disables_lateral is false
+        brake_disables_lateral = self.params.get_bool("BrakeDisablesLateral")
+        if not (CS.brakePressed and not brake_disables_lateral):
+          events.add(EventName.pcmDisable)
 
     return events

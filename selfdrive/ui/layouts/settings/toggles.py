@@ -66,6 +66,12 @@ class TogglesLayout(Widget):
         "disengage_on_accelerator.png",
         False,
       ),
+      "BrakeDisablesLateral": (
+        lambda: tr("Brake Disables Lateral Control"),
+        DESCRIPTIONS["BrakeDisablesLateral"],
+        "chffr_wheel.png",
+        False,
+      ),
       "IsLdwEnabled": (
         lambda: tr("Enable Lane Departure Warnings"),
         DESCRIPTIONS["IsLdwEnabled"],
@@ -125,12 +131,6 @@ class TogglesLayout(Widget):
         DESCRIPTIONS["ManualTransmission"],
         "chffr_wheel.png",
         True,
-      ),
-      "BrakeDisablesLateral": (
-        lambda: tr("Brake Disables Lateral Control"),
-        DESCRIPTIONS["BrakeDisablesLateral"],
-        "chffr_wheel.png",
-        False,
       ),
     }
 

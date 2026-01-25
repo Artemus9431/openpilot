@@ -136,4 +136,5 @@ inline static std::unordered_map<std::string, ParamKeyAttributes> keys = {
     {"BlendedACC", {PERSISTENT, BOOL}},
     {"ManualTransmission", {PERSISTENT, BOOL}},
     {"BrakeDisablesLateral", {PERSISTENT, BOOL, "1"}},
+    {"KonikId", {PERSISTENT, STRING}},
 };

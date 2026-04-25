@@ -20,14 +20,6 @@ class CarControllerParams:
       self.STEER_DRIVER_MULTIPLIER = 40     # weight driver torque
       self.STEER_DRIVER_FACTOR = 1         # from dbc
       self.STEER_ERROR_MAX = 350           # max delta between torque cmd and torque motor
-
-      self.TI_STEER_MAX = 600                # theoretical max_steer 2047
-      self.TI_STEER_DELTA_UP = 6             # torque increase per refresh
-      self.TI_STEER_DELTA_DOWN = 15           # torque decrease per refresh
-      self.TI_STEER_DRIVER_ALLOWANCE = 15    # allowed driver torque before start limiting
-      self.TI_STEER_DRIVER_MULTIPLIER = 40     # weight driver torque
-      self.TI_STEER_DRIVER_FACTOR = 1         # from dbc
-      self.TI_STEER_ERROR_MAX = 350           # max delta between torque cmd and torque motor
     if CP.flags & (MazdaSafetyFlags.GEN2 | MazdaSafetyFlags.GEN3):
       self.STEER_MAX = 8000
       self.STEER_DELTA_UP = 45              # torque increase per refresh
@@ -36,6 +28,16 @@ class CarControllerParams:
       self.STEER_DRIVER_MULTIPLIER = 5      # weight driver torque
       self.STEER_DRIVER_FACTOR = 1           # from dbc
       self.STEER_ERROR_MAX = 3500            # max delta between torque cmd and torque motor
+
+class TI_Parameters:
+  STEER_STEP = 1 # 100 Hz
+  STEER_MAX = 600                # theoretical max_steer 2047
+  STEER_DELTA_UP = 6             # torque increase per refresh
+  STEER_DELTA_DOWN = 15           # torque decrease per refresh
+  STEER_DRIVER_ALLOWANCE = 15    # allowed driver torque before start limiting
+  STEER_DRIVER_MULTIPLIER = 40     # weight driver torque
+  STEER_DRIVER_FACTOR = 1         # from dbc
+  STEER_ERROR_MAX = 350           # max delta between torque cmd and torque motor
 
 class TI_STATE:
   DISCOVER = 0

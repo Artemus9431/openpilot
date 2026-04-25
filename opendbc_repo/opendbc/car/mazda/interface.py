@@ -94,7 +94,7 @@ class CarInterface(CarInterfaceBase):
         ret.flags |= MazdaSafetyFlags.TORQUE_INTERCEPTOR.value
         ret.safetyConfigs[0].safetyParam |= MazdaSafetyFlags.TORQUE_INTERCEPTOR.value
         ret.minSteerSpeed = 0.0
-        ret.steerAtStandstill = True
+        ret.steerAtStandstill = False
       if p.get_bool("RadarInterceptorEnabled"): # Radar Interceptor Installed
         ret.flags |= MazdaSafetyFlags.RADAR_INTERCEPTOR.value
         ret.safetyConfigs[0].safetyParam |= MazdaSafetyFlags.RADAR_INTERCEPTOR.value

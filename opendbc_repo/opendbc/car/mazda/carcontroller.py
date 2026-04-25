@@ -3,7 +3,7 @@ from opendbc.car import Bus, structs
 from opendbc.car.lateral import apply_driver_steer_torque_limits
 from opendbc.car.interfaces import CarControllerBase
 from opendbc.car.mazda import mazdacan
-from opendbc.car.mazda.values import CarControllerParams, Buttons, MazdaSafetyFlags
+from opendbc.car.mazda.values import CarControllerParams, Buttons, MazdaSafetyFlags, TI_Parameters
 from openpilot.common.realtime import ControlsTimer as Timer, DT_CTRL
 from openpilot.common.filter_simple import FirstOrderFilter
 from openpilot.common.params import Params
@@ -40,7 +40,7 @@ class CarController(CarControllerBase):
         if CS.ti_lkas_allowed:
           ti_new_torque = int(round(CC.actuators.torque * self.ccp.STEER_MAX))
           ti_apply_torque = apply_driver_steer_torque_limits(ti_new_torque, self.apply_torque_last,
-                                                    CS.out.steeringTorque, self.ccp)
+                                                    CS.out.steeringTorque, TI_Parameters)
 
     self.apply_torque_last = apply_torque
     self.ti_apply_torque_last = ti_apply_torque

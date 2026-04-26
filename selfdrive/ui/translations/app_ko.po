@@ -131,13 +131,13 @@ msgstr "뒤로"
 
 #: openpilot/selfdrive/ui/widgets/prime.py:38
 #, python-format
-msgid "Become a comma prime member at connect.comma.ai"
-msgstr "connect.comma.ai에서 comma prime 회원이 되세요"
+msgid "Become a comma prime member at stable.konik.ai"
+msgstr "stable.konik.ai에서 comma prime 회원이 되세요"
 
 #: openpilot/selfdrive/ui/widgets/pairing_dialog.py:119
 #, python-format
-msgid "Bookmark connect.comma.ai to your home screen to use it like an app"
-msgstr "connect.comma.ai를 홈 화면에 추가하여 앱처럼 사용하세요"
+msgid "Bookmark stable.konik.ai to your home screen to use it like an app"
+msgstr "stable.konik.ai를 홈 화면에 추가하여 앱처럼 사용하세요"
 
 #: openpilot/selfdrive/ui/layouts/settings/device.py:66
 #, python-format
@@ -418,8 +418,8 @@ msgstr "양호"
 
 #: openpilot/selfdrive/ui/widgets/pairing_dialog.py:117
 #, python-format
-msgid "Go to https://connect.comma.ai on your phone"
-msgstr "휴대폰에서 https://connect.comma.ai 에 접속하세요"
+msgid "Go to https://stable.konik.ai on your phone"
+msgstr "휴대폰에서 https://stable.konik.ai 에 접속하세요"
 
 #: openpilot/selfdrive/ui/layouts/sidebar.py:129
 msgid "HIGH"
@@ -563,8 +563,8 @@ msgstr "장치를 귀하의 comma 계정에 페어링하세요"
 #: openpilot/selfdrive/ui/widgets/setup.py:47
 #: openpilot/selfdrive/ui/layouts/settings/device.py:23
 #, python-format
-msgid "Pair your device with comma connect (connect.comma.ai) and claim your comma prime offer."
-msgstr "장치를 comma connect(connect.comma.ai)와 페어링하고 comma 프라임 혜택을 받으세요."
+msgid "Pair your device with comma connect (stable.konik.ai) and claim your comma prime offer."
+msgstr "장치를 comma connect(stable.konik.ai)와 페어링하고 comma 프라임 혜택을 받으세요."
 
 #: openpilot/selfdrive/ui/widgets/setup.py:91
 #, python-format

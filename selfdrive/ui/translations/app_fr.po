@@ -132,13 +132,13 @@ msgstr "Retour"
 
 #: openpilot/selfdrive/ui/widgets/prime.py:38
 #, python-format
-msgid "Become a comma prime member at connect.comma.ai"
-msgstr "Devenez membre comma prime sur connect.comma.ai"
+msgid "Become a comma prime member at stable.konik.ai"
+msgstr "Devenez membre comma prime sur stable.konik.ai"
 
 #: openpilot/selfdrive/ui/widgets/pairing_dialog.py:119
 #, python-format
-msgid "Bookmark connect.comma.ai to your home screen to use it like an app"
-msgstr "Ajoutez connect.comma.ai à votre écran d'accueil pour l'utiliser comme une application"
+msgid "Bookmark stable.konik.ai to your home screen to use it like an app"
+msgstr "Ajoutez stable.konik.ai à votre écran d'accueil pour l'utiliser comme une application"
 
 #: openpilot/selfdrive/ui/layouts/settings/device.py:66
 #, python-format
@@ -419,8 +419,8 @@ msgstr "BON"
 
 #: openpilot/selfdrive/ui/widgets/pairing_dialog.py:117
 #, python-format
-msgid "Go to https://connect.comma.ai on your phone"
-msgstr "Allez sur https://connect.comma.ai sur votre téléphone"
+msgid "Go to https://stable.konik.ai on your phone"
+msgstr "Allez sur https://stable.konik.ai sur votre téléphone"
 
 #: openpilot/selfdrive/ui/layouts/sidebar.py:129
 msgid "HIGH"
@@ -564,8 +564,8 @@ msgstr "Associez votre appareil à votre compte comma"
 #: openpilot/selfdrive/ui/widgets/setup.py:47
 #: openpilot/selfdrive/ui/layouts/settings/device.py:23
 #, python-format
-msgid "Pair your device with comma connect (connect.comma.ai) and claim your comma prime offer."
-msgstr "Associez votre appareil à comma connect (connect.comma.ai) et réclamez votre offre comma prime."
+msgid "Pair your device with comma connect (stable.konik.ai) and claim your comma prime offer."
+msgstr "Associez votre appareil à comma connect (stable.konik.ai) et réclamez votre offre comma prime."
 
 #: openpilot/selfdrive/ui/widgets/setup.py:91
 #, python-format

@@ -8,6 +8,7 @@ from enum import StrEnum
 from typing import Any, NamedTuple
 from collections.abc import Callable
 from functools import cache
+from cereal import car
 
 from opendbc.car import DT_CTRL, apply_hysteresis, gen_empty_fingerprint, scale_rot_inertia, scale_tire_stiffness, STD_CARGO_KG
 from opendbc.car import structs
@@ -50,7 +51,8 @@ class LatControlInputs(NamedTuple):
   aego: float
 
 
-TorqueFromLateralAccelCallbackType = Callable[[LatControlInputs, structs.CarParams.LateralTorqueTuning, bool], float]
+TorqueFromLateralAccelCallbackType = Callable[[float, car.CarParams.LateralTorqueTuning, bool], float]
+LateralAccelFromTorqueCallbackType = Callable[[float, car.CarParams.LateralTorqueTuning, bool], float]
 
 
 @cache
@@ -181,13 +183,18 @@ class CarInterfaceBase(ABC):
   def get_steer_feedforward_function(self):
     return self.get_steer_feedforward_default
 
-  def torque_from_lateral_accel_linear(self, latcontrol_inputs: LatControlInputs, torque_params: structs.CarParams.LateralTorqueTuning,
-                                       gravity_adjusted: bool) -> float:
+  def torque_from_lateral_accel_linear(self, lateral_acceleration: float, torque_params: car.CarParams.LateralTorqueTuning) -> float:
     # The default is a linear relationship between torque and lateral acceleration (accounting for road roll and steering friction)
-    return latcontrol_inputs.lateral_acceleration / float(torque_params.latAccelFactor)
+    return lateral_acceleration / float(torque_params.latAccelFactor)
 
   def torque_from_lateral_accel(self) -> TorqueFromLateralAccelCallbackType:
     return self.torque_from_lateral_accel_linear
+
+  def lateral_accel_from_torque_linear(self, torque: float, torque_params: car.CarParams.LateralTorqueTuning) -> float:
+    return torque * float(torque_params.latAccelFactor)
+
+  def lateral_accel_from_torque(self) -> LateralAccelFromTorqueCallbackType:
+    return self.lateral_accel_from_torque_linear
 
   # returns a set of default params to avoid repetition in car specific params
   @staticmethod

@@ -75,6 +75,41 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
       "../assets/icons/metric.png",
       false,
     },
+    {
+      "TorqueInterceptorEnabled",
+      tr("Enable Torque Interceptor"),
+      tr("Use the torque interceptor"),
+      "../assets/icons/chffr_wheel.png",
+       true,
+    },
+    {
+      "RadarInterceptorEnabled",
+      tr("Enable Radar Interceptor"),
+      tr("Use the radar interceptor to block the car's radar and use openpilot's radar instead. This is required for openpilot longitudinal control on some cars, but can also be used with stock ACC."),
+      "../assets/icons/chffr_wheel.png",
+      false,
+    },
+    {
+      "NoMRCC",
+      tr("Disable Stock MRCC"),
+      tr(""),
+      "../assets/icons/chffr_wheel.png",
+      false,
+    },
+    {
+      "NoFSC",
+      tr("Disable Stock FSC"),
+      tr(""),
+      "../assets/icons/chffr_wheel.png",
+      false,
+    },
+    {
+      "ManualTransmission",
+      tr("Manual Transmission"),
+      tr(""),
+      "../assets/icons/chffr_wheel.png",
+      false,
+    },
   };
 
 

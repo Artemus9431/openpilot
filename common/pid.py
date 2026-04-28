@@ -2,17 +2,10 @@ import numpy as np
 from numbers import Number
 
 class PIDController:
-  def __init__(self, k_p, k_i, k_f=1., k_d=0., pos_limit=1e308, neg_limit=-1e308, rate=100):
-    self._k_p = k_p
-    self._k_i = k_i
-    self._k_d = k_d
-    self.k_f = k_f   # feedforward gain
-    if isinstance(self._k_p, Number):
-      self._k_p = [[0], [self._k_p]]
-    if isinstance(self._k_i, Number):
-      self._k_i = [[0], [self._k_i]]
-    if isinstance(self._k_d, Number):
-      self._k_d = [[0], [self._k_d]]
+  def __init__(self, k_p, k_i, k_d=0., pos_limit=1e308, neg_limit=-1e308, rate=100):
+    self._k_p: list[list[float]] = [[0], [k_p]] if isinstance(k_p, Number) else k_p
+    self._k_i: list[list[float]] = [[0], [k_i]] if isinstance(k_i, Number) else k_i
+    self._k_d: list[list[float]] = [[0], [k_d]] if isinstance(k_d, Number) else k_d
 
     self.set_limits(pos_limit, neg_limit)
 
@@ -48,19 +41,16 @@ class PIDController:
     self.speed = speed
     self.p = self.k_p * float(error)
     self.d = self.k_d * error_rate
-    self.f = self.k_f * feedforward
+    self.f = feedforward
 
-    i_candidate = self.i if freeze_integrator else self.i + self.k_i * self.i_dt * error
-    u = self.p + i_candidate + self.d + self.f
-    u_sat = np.clip(u, self.neg_limit, self.pos_limit)
+    if not freeze_integrator:
+      i = self.i + self.k_i * self.i_dt * error
 
-    if u == u_sat:
-      self.i = i_candidate
-    else:
-      if u > self.pos_limit and error < 0:
-        self.i = i_candidate
-      elif u < self.neg_limit and error > 0:
-        self.i = i_candidate
+      # Don't allow windup if already clipping
+      test_control = self.p + i + self.d + self.f
+      i_upperbound = self.i if test_control > self.pos_limit else self.pos_limit
+      i_lowerbound = self.i if test_control < self.neg_limit else self.neg_limit
+      self.i = np.clip(i, i_lowerbound, i_upperbound)
 
     control = self.p + self.i + self.d + self.f
     self.control = np.clip(control, self.neg_limit, self.pos_limit)
